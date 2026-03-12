@@ -1,0 +1,65 @@
+// Faris Management – Prisma Schema
+// Database: Vercel Postgres (PostgreSQL)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model Property {
+  id          Int      @id @default(autoincrement())
+  title       String
+  address     String
+  city        String
+  state       String
+  zipCode     String
+  price       Float
+  bedrooms    Int
+  bathrooms   Float
+  sqft        Int
+  type        String   // "Single Family" | "Condo" | "Townhouse" | "Luxury Estate" | "Ranch"
+  status      String   // "For Sale" | "For Rent" | "Sold" | "Pending"
+  description String
+  imageUrl    String
+  features    String[]
+  yearBuilt   Int
+  garage      Int      @default(0)
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("properties")
+}
+
+model Contact {
+  id          Int      @id @default(autoincrement())
+  firstName   String
+  lastName    String
+  email       String
+  phone       String?
+  message     String
+  propertyId  Int?
+  createdAt   DateTime @default(now())
+
+  @@map("contacts")
+}
+
+// ─── Future Auth (uncomment when ready) ──────────────────────────────
+// model User {
+//   id            String    @id @default(cuid())
+//   name          String?
+//   email         String?   @unique
+//   emailVerified DateTime?
+//   image         String?
+//   role          String    @default("agent")  // "admin" | "agent"
+//   createdAt     DateTime  @default(now())
+//   accounts      Account[]
+//   sessions      Session[]
+//
+//   @@map("users")
+// }

@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0F2044;
+  --gold: #C9A96E;
+  --cream: #F8F6F1;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-navy-900 antialiased;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-50;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gold-500 rounded-full;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-navy-900 text-white font-sans font-medium
+           px-6 py-3 rounded-lg transition-all duration-200
+           hover:bg-navy-700 hover:shadow-lg active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-gold-500 text-navy-900 font-sans font-semibold
+           px-6 py-3 rounded-lg transition-all duration-200
+           hover:bg-gold-400 hover:shadow-lg active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-navy-500 focus:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-navy-900 text-navy-900 font-sans font-medium
+           px-6 py-3 rounded-lg transition-all duration-200
+           hover:bg-navy-900 hover:text-white active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2;
+  }
+
+  .btn-outline-white {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-white text-white font-sans font-medium
+           px-6 py-3 rounded-lg transition-all duration-200
+           hover:bg-white hover:text-navy-900 active:scale-[0.98]
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:ring-offset-2;
+  }
+
+  .section-title {
+    @apply font-serif text-4xl md:text-5xl font-bold text-navy-900 leading-tight;
+  }
+
+  .section-subtitle {
+    @apply font-sans text-lg text-navy-500 leading-relaxed max-w-2xl;
+  }
+
+  .gold-divider {
+    @apply w-16 h-1 bg-gold-500 rounded-full;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-sm border border-navy-50
+           transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border border-navy-100 bg-white text-navy-900
+           placeholder:text-navy-300 font-sans text-sm
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-gold-500
+           transition-colors duration-200;
+  }
+
+  .select-field {
+    @apply w-full px-4 py-3 rounded-lg border border-navy-100 bg-white text-navy-900
+           font-sans text-sm appearance-none cursor-pointer
+           focus:outline-none focus:ring-2 focus:ring-gold-500 focus:border-gold-500
+           transition-colors duration-200;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
